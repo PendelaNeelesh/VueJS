@@ -20,7 +20,7 @@
       </select>
       <div class="terms">
           <input type="checkbox" required v-model='terms'>
-          <label>Accept T &amp C</label>
+          <label>Accept T and C</label>
       </div>
       <div class="submit">
         <button>Create an Account</button>
@@ -66,10 +66,10 @@ export default {
             if(this.pass1 !== this.pass2) this.passerror = "Mis-Match between passwords"
             else{
                 console.log('near request')
-                $.ajax('http://localhost:3000/').then((res)=>{
+                $.ajax('http://localhost:5000/').then((res)=>{
                     console.log(res);
                 })
-            }
+            } 
         }
     }
 }
