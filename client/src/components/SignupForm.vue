@@ -66,7 +66,7 @@ export default {
             if(this.pass1 !== this.pass2) this.passerror = "Mis-Match between passwords"
             else{
                 console.log('near request')
-                $.ajax('http://localhost:5000/').then((res)=>{
+                $.ajax('http://127.0.0.1:5000/').then((res)=>{
                     console.log(res);
                 })
             } 

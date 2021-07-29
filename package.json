@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "cd client && vue-cli-service serve",
     "build": "vue-cli-service build",
     "start": "cd server/src && npx nodemon index.js"
   },
   "dependencies": {
+    "browserify": "^17.0.0",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",

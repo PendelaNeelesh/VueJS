@@ -10,7 +10,7 @@ app.use(Express.static('../public/public/src/*'))
 
 app.use(cors())
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname+'/index.html'))
+    res.send('Saved Data');
 
 })
 
