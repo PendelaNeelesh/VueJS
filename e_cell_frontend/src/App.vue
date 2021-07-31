@@ -1,30 +1,88 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+<div class="app_container">
+   <nav class="navbar navbar-expand-sm">
+     <span></span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon">abc
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <router-link class="nav-link" to="/">
+                   Home
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link" to="/about">
+                  About
+                </router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link btn  btn-primary" v-if="loginactive"  to="/login">
+                  Login
+                </router-link>
+            </li>
+        </ul>
+      </div>
+    </nav>
+  <div class="container_router">
+    <router-view/>
   </div>
-  <router-view/>
+</div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+  export default{ 
+    name:'App',
+    data(){
+      return {
+        loginactive: true,
+      }
+    },
+     methods: {
+       loginoff(){
+         this.loginactive = false;
+       }
+      }
   }
-}
+
+</script>
+<style >
+
+ html,body{
+    width: 100%;
+    height: 100%;
+
+ }
+ #app{
+    width: 100%;
+    height: 100%;
+
+ }
+  .app_container{
+    width: 100%;
+    height: 100%;
+
+  }
+  .container_router{
+    width: 100%;
+    height: 100%;
+  }
+  nav{
+    border-style: outset;
+  }
+  .navbar-nav{
+    margin-left: auto;
+  }
+  .nav-link{
+    padding: 2.5px;
+    margin: 2.5px;
+    font-size: 15px;
+  }
+  .nav-item:hover{
+    border-radius: 5px;
+    background: rgb(188, 188, 192);
+    color: white;
+  }
 </style>
