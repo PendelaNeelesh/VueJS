@@ -1,14 +1,8 @@
 <template>
 <div class="app_container">
-  <div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <router-link class="btn btn-primary btn-lg" to="/internslist" role="button">Get Hired</router-link>
-  </div> 
-  <nav class="navbar navbar-expand-sm sticky-top">
-    <router-link to="/home" class="navbar-brand">
+   
+  <nav class="navbar navbar-expand-sm fixed-top">
+    <router-link to="/" class="navbar-brand">
       <img class="logo" src="./assets/logo.jpg" alt="">
     </router-link>
     <span class="navbar-brand">GetHired</span>
@@ -51,34 +45,17 @@
     <!-- Section: Social media -->
     <section class="mb-4">
       <!-- Facebook -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-facebook-f"></i
-      ></a>
-
-      <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-twitter"></i
-      ></a>
-
-      <!-- Google -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-google"></i
-      ></a>
-
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/" role="button"
+        ><font-awesome-icon :icon="['fab', 'facebook']" />
+      </a>
       <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
-
-      <!-- Linkedin -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-linkedin-in"></i
-      ></a>
-
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button"
+        ><font-awesome-icon :icon="['fab', 'instagram']" />
+      </a>
       <!-- Github -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-github"></i
-      ></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/PendelaNeelesh/VueJS" role="button"
+        ><font-awesome-icon :icon="['fab', 'github']" />
+      </a>
     </section>
     <!-- Section: Social media -->
 
@@ -98,19 +75,11 @@
           <!--Grid column-->
           <div class="col-md-5 col-12">
             <!-- Email input -->
-            <div class="form-outline form-white mb-4">
-              <input type="email" id="form5Example2" class="form-control" />
-              <label class="form-label" for="form5Example2">Email address</label>
-            </div>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-outline-light mb-4">
-              Subscribe
-            </button>
+            <form @submit.prevent="" class="form-outline form-white mb-4">
+              <input class="email" type="email" placeholder="email adress" id="form5Example2" />
+              <br>
+              <input @click="subscribed" class="subscribe" type="submit" value="Subscribe">
+            </form>
           </div>
           <!--Grid column-->
         </div>
@@ -134,88 +103,24 @@
       <!--Grid row-->
       <div class="row">
         <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
+        <div class="tomiddle">
+          <h5 class="text-uppercase">Team Members</h5>
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="#!" class="text-white">Link 1</a>
+              <a href="https://www.linkedin.com/in/neelesh-pendela-38ab8318b/" class="text-white">Pendela Neelesh</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Link 2</a>
+              <a href="https://ecell.nitk.ac.in/" class="text-white">E-Cell NITK</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Link 3</a>
+              <a href="https://nitk.ac.in/" class="text-white">NITK</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Link 4</a>
+              <a href="https://iris.nitk.ac.in/" class="text-white">IRIS</a>
             </li>
           </ul>
         </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
       </div>
       <!--Grid row-->
     </section>
@@ -245,12 +150,16 @@
      methods: {
        loginoff(){
          this.loginactive = false;
+       },
+       subscribed(){
+         console.log("Subscribed");
        }
-      }
+      },
   }
 
 </script>
 <style >
+  body { padding-top: 110px; }
   .nav-icon{
     width: 30px;
     height: 30px;
@@ -276,7 +185,7 @@
   }
   .container_router{
     width: 100%;
-    height: fit-content;
+    height: 1200px;
   }
   .navbar-nav{
     margin-left: auto;
@@ -292,7 +201,12 @@
     color: white;
   }
   .navbar{
-    background: whitesmoke;
+    background: rgba(228, 225, 225,0.9);
+  }
+  .email{
+    width:100%;
+    border-radius: 15px;
+    margin: 5px;
   }
 
 </style>
