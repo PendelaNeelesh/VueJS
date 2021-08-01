@@ -41,6 +41,7 @@
   <!-- Footer -->
 <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
+  <h1> Contact Us:</h1>
   <div class="container p-4">
     <!-- Section: Social media -->
     <section class="mb-4">
@@ -91,9 +92,8 @@
     <!-- Section: Text -->
     <section class="mb-4">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-        eum harum corrupti dicta, aliquam sequi voluptate quas.
+        Hey you can contact the team members regarding any doubts. If you want to add your company to our website 
+        contact PendelaNeelsh to add you as a manager. Further instructions will be provided then.
       </p>
     </section>
     <!-- Section: Text -->

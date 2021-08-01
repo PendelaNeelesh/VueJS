@@ -1,10 +1,12 @@
 <template>
   <div class="home">
     <div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <h1 class="display-4">Hey Searching... for job?</h1>
+    <p class="lead">You may have launched different websites for jobs, but not landed yet?</p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p>Don't worry you took a right step by launching us we have some of the best landing spots. Click the Get Hired
+      button to land in a safe spot.
+    </p>
     <router-link class="btn btn-primary btn-lg" to="/internslist" role="button">Get Hired</router-link>
   </div>
   </div>
@@ -24,9 +26,5 @@ export default {
 
   .home{
     height: 100%;
-    background-image: repeating-linear-gradient(to bottom,
-      rgb(26,198,204),
-      rgb(26,198,204) 7%,
-      rgb(100,100,100) 10%);
   }
 </style>
