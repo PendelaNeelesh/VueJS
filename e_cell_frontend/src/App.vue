@@ -39,7 +39,7 @@
     <router-view/>
   </div>
   <!-- Footer -->
-<footer class="bg-dark text-center text-white">
+  <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
   <h1> Contact Us:</h1>
   <div class="container p-4">
@@ -127,14 +127,14 @@
     <!-- Section: Links -->
   </div>
   <!-- Grid container -->
-
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.3751456672608!2d74.79077791479327!3d13.011765890829532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35211c2b4691d%3A0xe4546bb53e747b06!2sNITK%20bus%20stand!5e0!3m2!1sen!2sin!4v1627817758104!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2020 Copyright:
     <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
   </div>
   <!-- Copyright -->
-</footer>
+  </footer>
 <!-- Footer -->
 </div>
 </template>
@@ -159,7 +159,10 @@
 
 </script>
 <style >
-  body { padding-top: 110px; }
+  body { 
+    padding-top: 110px;
+    padding-left: 10px;
+  }
   .nav-icon{
     width: 30px;
     height: 30px;
@@ -185,7 +188,8 @@
   }
   .container_router{
     width: 100%;
-    height: 1200px;
+    min-height: 900px;
+    max-height: fit-content;
   }
   .navbar-nav{
     margin-left: auto;
@@ -208,5 +212,9 @@
     border-radius: 15px;
     margin: 5px;
   }
+  .tomiddle{
+    float: left;
+  }
+
 
 </style>
