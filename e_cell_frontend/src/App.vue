@@ -93,7 +93,7 @@
     <section class="mb-4">
       <p>
         Hey you can contact the team members regarding any doubts. If you want to add your company to our website 
-        contact PendelaNeelsh to add you as a manager. Further instructions will be provided then.
+        <router-link to="/login"> Login </router-link> as a manager. Further instructions will be provided then.
       </p>
     </section>
     <!-- Section: Text -->
@@ -159,9 +159,11 @@
 
 </script>
 <style >
-  body { 
+  #body{
     padding-top: 110px;
-    padding-left: 10px;
+    background: rgb(149,196,252);
+    width: fit-content;
+    height: fit-content;
   }
   .nav-icon{
     width: 30px;
@@ -172,8 +174,10 @@
     height: 80px;
   }
  html,body{
-    width: 100%;
-    height: 100%;
+   min-width: 100%;
+   min-height: 100%;
+    width: fit-content;
+    height: fit-content;
 
  }
  #app{
@@ -189,7 +193,9 @@
   .container_router{
     width: 100%;
     min-height: 900px;
-    max-height: fit-content;
+    max-height: fit-content; 
+    display: flex;
+    justify-content: center;
   }
   .navbar-nav{
     margin-left: auto;
@@ -205,7 +211,7 @@
     color: white;
   }
   .navbar{
-    background: rgba(228, 225, 225,0.9);
+    background: white
   }
   .email{
     width:100%;
