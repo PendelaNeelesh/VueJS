@@ -1,13 +1,25 @@
 <template>
 <div class="app_container">
-   <nav class="navbar navbar-expand-sm">
-     <span></span>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon">abc
-        </span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav ml-auto">
+  <div class="jumbotron">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <router-link class="btn btn-primary btn-lg" to="/login" role="button">Get Hired</router-link>
+</div> 
+   <nav class="navbar navbar-expand-sm sticky-top">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span>
+          <svg viewBox="0 0 100 80" width="40" height="40">
+              <rect width="100" height="20"></rect>
+              <rect y="30" width="100" height="20"></rect>
+              <rect y="60" width="100" height="20"></rect>
+          </svg>
+      </span>
+    </button>
+     <div class="collapse navbar-collapse" id="navCollapse">
+    <span>GetHired</span>
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <router-link class="nav-link" to="/">
                    Home
@@ -24,7 +36,7 @@
                 </router-link>
             </li>
         </ul>
-      </div>
+        </div>
     </nav>
   <div class="container_router">
     <router-view/>
@@ -49,7 +61,10 @@
 
 </script>
 <style >
-
+  .nav-icon{
+    width: 30px;
+    height: 30px;
+  }
  html,body{
     width: 100%;
     height: 100%;
@@ -67,10 +82,7 @@
   }
   .container_router{
     width: 100%;
-    height: 100%;
-  }
-  nav{
-    border-style: outset;
+    height: fit-content;
   }
   .navbar-nav{
     margin-left: auto;
