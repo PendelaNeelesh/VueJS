@@ -1,6 +1,6 @@
 <template>
 <div class="app_container">
-   
+   <!--Nav bar -->
   <nav class="navbar navbar-expand-sm fixed-top">
     <router-link to="/" class="navbar-brand">
       <img class="logo" src="./assets/logo.jpg" alt="">
@@ -18,26 +18,36 @@
     <div class="collapse navbar-collapse" id="navCollapse">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <router-link class="nav-link" to="/">
+          <router-link @click="topFunction" class="nav-link" to="/">
              Home
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/about">
+          <router-link @click="topFunction" class="nav-link" to="/about">
             About
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link btn  btn-primary" v-if="loginactive"  to="/login">
+          <router-link @click="topFunction" class="nav-link btn  btn-primary" to="/internslist">
+            Interns
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link @click="topFunction" class="nav-link btn  btn-primary" v-if="loginactive"  to="/signin">
             Login
           </router-link>
         </li>
       </ul>
     </div>
   </nav>
+  <!-- nav bar-->
+
+  <!-- Content Displayer -->
   <div class="container_router">
     <router-view/>
   </div>
+  <!-- Content Displayer -->
+
   <!-- Footer -->
   <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
@@ -93,7 +103,7 @@
     <section class="mb-4">
       <p>
         Hey you can contact the team members regarding any doubts. If you want to add your company to our website 
-        <router-link to="/login"> Login </router-link> as a manager. Further instructions will be provided then.
+        <router-link  @click="topFunction" to="/signin"> Login </router-link> as a manager. Further instructions will be provided then.
       </p>
     </section>
     <!-- Section: Text -->
@@ -135,7 +145,8 @@
   </div>
   <!-- Copyright -->
   </footer>
-<!-- Footer -->
+  <!-- Footer -->
+
 </div>
 </template>
 
@@ -148,12 +159,16 @@
       }
     },
      methods: {
-       loginoff(){
+      loginoff(){
          this.loginactive = false;
        },
-       subscribed(){
+      subscribed(){
          console.log("Subscribed");
-       }
+       },
+      topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
       },
   }
 
@@ -191,6 +206,7 @@
 
   }
   .container_router{
+    overflow: hidden;
     width: 100%;
     min-height: 900px;
     max-height: fit-content; 
@@ -220,6 +236,9 @@
   }
   .tomiddle{
     float: left;
+  }
+  footer{
+    width: 100%;
   }
 
 

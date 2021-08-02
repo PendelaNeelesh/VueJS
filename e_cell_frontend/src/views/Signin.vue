@@ -2,13 +2,24 @@
   <div class="formdiv">
     <div class="form">
       <form class="formcontents" @submit.prevent="handlesubmit" >
-        <label>Full Name/ Email </label>
-        <input type="text/email" v-model="fullname" required>
+        <label>Full Name: </label>
+        <input type="text" v-model="fullname" required>
+        <label>Email: </label>
+        <input type="email" v-model="email"  required>
         <label>password: </label>
         <input type="password" v-model="password" required>
+        <label>Confirm Password: </label>
+        <input type="password" v-model="cnfpassword" required>
+        <label>Sign-in as:</label>
+        <select v-model="role">
+          <option value="User/Student">User or Student</option>
+          <option value="Manager">Manager</option>
+        </select>
         <div class="submit">
-          <button v-if="!verified">Verify</button>
-          <button v-else disabled> Verified </button>
+          <button @click="topFunction">Create Account</button>
+        </div>
+        <div class="submit">
+          <router-link @click="topFunction" to="/login"> Having Account? Login here </router-link>
         </div>
       </form>
     </div>
@@ -21,16 +32,16 @@ export default {
   data(){
     return {
       fullname: "",
+      email: "",
       password: "",
-      ismanger: false,
-      verified: false
+      cnfpassword: "",
+      role: "User/Student",
+      
     }
   },
   methods: {
     handlesubmit(){
       console.log("Submit");
-      this.verified= true;
-      if(this.verified) this.$router.push('/')
     },
     topFunction() {
       document.body.scrollTop = 0;
@@ -96,6 +107,6 @@ export default {
     }
     .submit{
       text-align: center;
-      height: fit-content;
+
     }
 </style>

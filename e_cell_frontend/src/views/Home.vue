@@ -19,7 +19,7 @@
       <div class="content">
         <p>
           Land in your favourate position
-          <router-link to="/internslist">
+          <router-link  @click="topFunction" to="/internslist">
             from here
           </router-link>
         </p>
@@ -78,6 +78,12 @@
 export default {
   name: 'Home',
   components: {
+  },
+  methods: {
+    topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
   }
 }
 </script>
@@ -125,7 +131,7 @@ export default {
     font-weight: bold;
     color: white;
   }
-  @media (min-width: 800px){
+  @media (min-width: 1106px){
     img{
       width: 400px;
       height: 400px;
