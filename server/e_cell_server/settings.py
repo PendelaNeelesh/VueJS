@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-xbdu73yg0k)p%5$yx2%xa$bqsske-x&e!pljzdgvgeffr+dh+0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS=[]
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -37,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #3rd-party
+    'corsheaders',
+    # Own Apps
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'e_cell_server.urls'
@@ -75,15 +82,16 @@ WSGI_APPLICATION = 'e_cell_server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': '/etc/mysql/my.cnf',
+        },
     }
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

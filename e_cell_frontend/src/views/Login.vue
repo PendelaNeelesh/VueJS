@@ -3,12 +3,11 @@
     <div class="form">
       <form class="formcontents" @submit.prevent="handlesubmit" >
         <label>Full Name/ Email </label>
-        <input type="text/email" v-model="fullname" required>
+        <input type="text/email" v-model="userstatus.username" required>
         <label>password: </label>
-        <input type="password" v-model="password" required>
+        <input type="password" v-model="userstatus.password" required>
         <div class="submit">
-          <button v-if="!verified">Verify</button>
-          <button v-else disabled> Verified </button>
+          <button>Login</button>
         </div>
       </form>
     </div>
@@ -16,21 +15,15 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   name: "Signin",
-  data(){
-    return {
-      fullname: "",
-      password: "",
-      ismanger: false,
-      verified: false
-    }
-  },
+  computed: mapGetters( ['userstatus'] ),
   methods: {
-    handlesubmit(){
-      console.log("Submit");
-      this.verified= true;
-      if(this.verified) this.$router.push('/')
+    async handlesubmit(){
+      await this.$store.dispatch("verifyuser")
+      if(this.userstatus.verified) console.log('verified');
+      else console.log("not verified")
     },
     topFunction() {
       document.body.scrollTop = 0;

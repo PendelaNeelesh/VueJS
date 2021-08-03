@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div v-if="verifeidstatus" class="wrapper">
       <div class="filter">
           <div class="type">
               <form class="filterfrom">
@@ -35,9 +35,11 @@
           </div>
       </div>
   </div>
+  <div v-else> Please login </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Intern from '../components/Intern.vue'
 export default {
     name: "InternsList",
@@ -89,6 +91,7 @@ export default {
         ]
         }
     },
+    computed: mapGetters( ['verifeidstatus'] ),
     components: { Intern, }
 
 }

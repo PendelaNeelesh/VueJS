@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="question">
-      Some of the Available Launch Pads
+      Some of the Available Landing Pads
     </div>
     <div class="companies">
       <div class="company">
