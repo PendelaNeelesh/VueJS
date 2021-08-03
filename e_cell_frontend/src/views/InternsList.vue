@@ -29,6 +29,11 @@
               </form>
           </div>
       </div>
+      <div class="content">
+          <div class="contentwrapper">
+            <Intern v-for="intern in Interns" :key="intern.id" :internship="intern" />
+          </div>
+      </div>
   </div>
 </template>
 
@@ -39,7 +44,49 @@ export default {
     data(){
         return {
             jobtypes: "",
-            jobs: []
+            Interns: [
+          {
+            id: 1,
+            title: "Soft-ware-developer at Google",
+            location: "Guntur",
+            type: "software-devloper",
+            minpay: 10000,
+            maxpay: 20000,
+            description: "Lorem...",
+            company: "Google"
+
+          },
+          {
+            id: 2,
+            title: "Soft-ware-developer at hippo",
+            location: "Hyderabad",
+            type: "product-developer",
+            minpay: 1000,
+            maxpay: 2000,
+            description: "Lorem...",
+            company: "hippo"
+          },
+          {
+            id: 4,
+            title: "Soft-ware-developer at hippo",
+            location: "Hyderabad",
+            type: "product-developer",
+            minpay: 1000,
+            maxpay: 2000,
+            description: "Lorem...",
+            company: "hippo"
+          },
+          {
+            id: 3,
+            title: "Soft-ware-developer at hippo",
+            location: "Hyderabad",
+            type: "product-developer",
+            minpay: 1000,
+            maxpay: 2000,
+            description: "Lorem...",
+            company: "hippo"
+          }
+        ]
         }
     },
     components: { Intern, }
@@ -50,15 +97,26 @@ export default {
 <style scoped>
     .wrapper{
         width: 100%;
-        height: 100%;
+        height: inherit;
         display: grid;
         grid-template-columns: 30% 70%;
     }
     .filter{
-        grid-column-start:1 ;
-        grid-column-end: 2;
+        min-height: 50px;
+        height: fit-content;
         display: grid;
         grid-template-rows:33% 33% 33%;
+    }
+    .content{
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+    .contentwrapper{
+        min-width: 100%;
+        min-height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
     }
 
 </style>
