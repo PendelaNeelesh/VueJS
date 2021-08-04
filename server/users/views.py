@@ -4,6 +4,8 @@ import json
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from .models import Ext_User
+from .models import Intern
+from django.core import serializers
 
 # Create your views here.
 def verify(request):
@@ -41,6 +43,27 @@ def createuser(request):
 
 def interns(request):
     if(request.method == "GET"):
-        print(request.GET.get('all'))
-        xyz = { "all":"fine" }
-    return JsonResponse(xyz)
+        if(request.GET.get('all') == "True"):
+            obj = Intern.objects.all()
+            data = serializers.serialize('json',obj,fields=('title','pay','jobtype','company'))
+            print(type(data))
+            return JsonResponse(data,safe=False)
+        return JsonResponse({"m":"m"})
+
+def addintern(request):
+    if(request.method == "POST"):
+        company = request.POST.get('comp')
+        email = request.POST.get('email')
+        title = request.POST.get('title')
+        jobtype = request.POST.get('type')
+        pay = request.POST.get('pay')
+        description = request.POST.get('desc')
+        username = request.POST.get('user')
+        u = User.objects.get(username=username)
+        obj = Intern.objects.create(company=company,email=email,title=title,jobtype=jobtype,pay=pay,description=description,username=u)
+        if(obj is not None):
+            xyz = { "message": "Created"}
+            return JsonResponse(xyz)
+        else:
+            xyz = { "message": "not created" }
+            return JsonResponse(xyz)

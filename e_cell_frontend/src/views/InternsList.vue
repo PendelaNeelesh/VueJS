@@ -87,5 +87,15 @@ export default {
         grid-template-columns: 1fr;
         justify-content: center;
     }
+    input{
+      display: block;
+      padding: 10px 6px;
+      width: 100%;
+      box-sizing: border-box;
+      border: none;
+      border-bottom: 1px solid black;
+      color: black;
+      font-weight: bold;
+    }
 
 </style>

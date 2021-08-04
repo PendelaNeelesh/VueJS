@@ -3,47 +3,7 @@ import jQuery from "jquery";
 
 const state = {
     allinterns: [
-        {
-            id: 1,
-            title: "Soft-ware-developer at Google",
-            location: "Guntur",
-            type: "software-devloper",
-            minpay: 10000,
-            maxpay: 20000,
-            description: "Lorem...",
-            company: "Google"
-
-          },
-          {
-            id: 2,
-            title: "Soft-ware-developer at hippo",
-            location: "Hyderabad",
-            type: "product-developer",
-            minpay: 1000,
-            maxpay: 2000,
-            description: "Lorem...",
-            company: "hippo"
-          },
-          {
-            id: 4,
-            title: "Soft-ware-developer at hippo",
-            location: "Hyderabad",
-            type: "product-developer",
-            minpay: 1000,
-            maxpay: 2000,
-            description: "Lorem...",
-            company: "hippo"
-          },
-          {
-            id: 3,
-            title: "Soft-ware-developer at hippo",
-            location: "Hyderabad",
-            type: "product-developer",
-            minpay: 1000,
-            maxpay: 2000,
-            description: "Lorem...",
-            company: "hippo"
-          }
+        
     ],
 };
 

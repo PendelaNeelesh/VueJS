@@ -42,6 +42,11 @@
             Signin
           </router-link>
         </li>
+        <li class="nav-item">
+          <button v-if="verifeidstatus" @click="clearsession" class="nav-link">
+            Logout
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
@@ -169,7 +174,13 @@
       topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
-        }
+        },
+      clearsession(){
+        console.log('in clear session')
+        window.sessionStorage.clear();
+        window.location.reload();
+        console.log(window.sessionStorage)
+      }
       },
     computed: {
       ...mapGetters(['verifeidstatus']),

@@ -15,3 +15,18 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.ext_user.save()
+
+class Intern(models.Model):
+
+    auto_id = models.AutoField(primary_key=True)
+    company = models.CharField(max_length=50,blank=False)
+    email = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    jobtype = models.CharField(max_length=50)
+    pay = models.IntegerField()
+    description = models.TextField()
+    username = models.ForeignKey(User,default="unknown",on_delete=models.SET_DEFAULT) 
+    class Meta:
+        verbose_name_plural = "interns"
+    def __str__(self):
+        return self.title

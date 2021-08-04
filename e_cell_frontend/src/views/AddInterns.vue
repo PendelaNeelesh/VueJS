@@ -1,5 +1,5 @@
 <template>
-  <div class="formdiv">
+  <div v-if="verifeidstatus && managerstatus" class="formdiv">
     <div class="form">
       <form class="formcontents" @submit.prevent="handlesubmit" >
         <label>Company: </label>
@@ -22,15 +22,23 @@
       </form>
     </div>
   </div>
+  <div v-else>
+    Please login
+  </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
-    name: "AddInterns"
+    name: "AddInterns",
+    computed: {
+      ...mapGetters(['verifeidstatus']),
+      ...mapGetters(['managerstatus']),
+    }
 }
 </script>
 
-<style>
+<style scoped>
     .formdiv{
         background-image: url('../assets/background.jpg');
         width: inherit;
