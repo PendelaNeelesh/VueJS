@@ -23,6 +23,7 @@ class Intern(models.Model):
     email = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
     jobtype = models.CharField(max_length=50)
+    location = models.CharField(max_length=100,blank=False,default="India")
     pay = models.IntegerField()
     description = models.TextField()
     username = models.ForeignKey(User,default="unknown",on_delete=models.SET_DEFAULT) 

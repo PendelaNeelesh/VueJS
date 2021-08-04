@@ -3,17 +3,19 @@
     <div class="form">
       <form class="formcontents" @submit.prevent="handlesubmit" >
         <label>Company: </label>
-        <input type="text" required>
+        <input type="text" required v-model="comp">
         <label>Email: </label>
-        <input type="email"   required>
+        <input type="email"   required v-model="email">
         <label>Title: </label>
-        <input type="text"  required>
+        <input type="text"  required v-model="title">
         <label>Type: </label>
-        <input type="text" required>
+        <input type="text" required v-model="type">
+        <label>Location: </label>
+        <input type="text" required v-model="loc">
         <label>Pay: </label>
-        <input type="number"  required>
+        <input type="number"  required v-model="pay">
         <label>Description:</label>
-        <textarea rows = "5" cols = "60" name = "description">
+        <textarea rows = "5" cols = "60" name = "description" v-model="desc">
             Enter details here...
          </textarea>
         <div class="submit">
@@ -31,9 +33,36 @@
 import {mapGetters} from 'vuex'
 export default {
     name: "AddInterns",
+    data(){
+      return {
+        comp: "",
+        email: "",
+        loc: "",
+        pay: 0,
+        desc: "",
+        title: "",
+        type: "",
+      }
+    },
     computed: {
       ...mapGetters(['verifeidstatus']),
       ...mapGetters(['managerstatus']),
+      ...mapGetters( ['getuser'])
+    },
+    methods: {
+      handlesubmit(){
+        var data = {
+          comp: this.comp,
+          email: this.email,
+          loc: this.loc,
+          pay: this.pay,
+          desc: this.desc,
+          title: this.title,
+          type: this.type,
+          user: this.getuser
+        }
+        this.$store.dispatch("addintern",data)
+      }
     }
 }
 </script>

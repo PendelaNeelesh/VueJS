@@ -1,25 +1,7 @@
 <template>
-  <div v-if="verifeidstatus" class="wrapper">
-      <div class="filter">
-          <div class="location">
-              <form @submit.prevent="filter" class="filterfrom">
-                  <div class="fomrdiv">
-                      <input type="text" placeholder="location" v-model="filele">
-                  </div>
-                  <div class="buttons">
-                      <button  type="submit" class="btn btn-primary">
-                          filter
-                      </button>
-                      <button @click="getall" class="btn btn-primary">
-                          cancel
-                        </button>
-                      <div>ensure that 1st letter is capital</div>
-                  </div>
-              </form>
-          </div>
-      </div>
+  <div v-if="verifeidstatus && managerstatus" class="wrapper">
       <div class="content">
-        <Intern v-for="intern in getinterns" :key="intern.auto_id" :internship="intern"/>
+        <Intern v-for="intern in getinterns" :key="intern.auto_id" :internship="intern" />
       </div>
     <div class="buttons">
         <button class="btn  btn-primary" @click="getprev">
@@ -37,18 +19,8 @@
 import { mapGetters, mapActions } from 'vuex'
 import Intern from '../components/Intern.vue'
 export default {
-    name: "InternsList",
-    data(){
-        return {
-            filele: "default"
-        }
-    },
+    name: "ManageInterns",
     methods: {
-        getall(){
-            console.log('in get all')
-            this.filele = "default"
-            this.$store.dispatch("getinterns")
-        },
         getnext(){
             let p = this.page
             let t = this.total
@@ -65,24 +37,20 @@ export default {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         },
-        async filter(){
-                await this.$store.dispatch("changeele",this.filele)
-                this.$store.dispatch("getinterns")
-            
-        }
     },
     computed: {
         ...mapGetters( ['page'] ),
         ...mapGetters( ['total'] ),
         ...mapGetters( ['verifeidstatus'] ),
         ...mapGetters( ['getinterns']),
-        ...mapGetters( ['filterele'])
+        ...mapGetters( ['managerstatus'] ),
     },
     components: { Intern, },
     mounted(){
         if(this.verifeidstatus){
-            this.$store.dispatch("getinterns")
+            this.$store.dispatch("getmanagerinterns",this.getuser)
         }
+        
     }
 
 }

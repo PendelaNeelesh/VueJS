@@ -6,5 +6,8 @@ urlpatterns = [
     path('verify',csrf_exempt(views.verify)),
     path('create',csrf_exempt(views.createuser)),
     path('interns',views.interns),
-    path('addintern',csrf_exempt(views.addintern))
+    path('addintern',csrf_exempt(views.addintern)),
+    path('count',views.internCount),
+    path('delinterns',views.deleteintern),
+    path('apply',views.applyinternship),
 ]

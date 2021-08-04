@@ -4,6 +4,7 @@ import Signin from '../views/Signin.vue'
 import Login from '../views/Login.vue'
 import InternsList from '../views/InternsList.vue'
 import AddInterns from '../views/AddInterns.vue'
+import ManageInterns from '../views/Manage.vue'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/makeintern',
     name: 'AddInterns',
     component: AddInterns
+  },
+  {
+    path: '/managerlist',
+    name: 'ManageInterns',
+    component: ManageInterns
   }
 ]
 

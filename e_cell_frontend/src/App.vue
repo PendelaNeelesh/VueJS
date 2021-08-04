@@ -28,8 +28,18 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link @click="topFunction" class="nav-link btn  btn-primary" to="/internslist">
+          <router-link v-if="!managerstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/internslist">
             Interns
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link v-if="managerstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/managerlist">
+            Your Interns
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link v-if="managerstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/makeintern">
+            Add Interns
           </router-link>
         </li>
         <li class="nav-item">

@@ -19,6 +19,9 @@ const getters = {
     },
     managerstatus: (state)=>{
         return state.userinfo.ismanager;
+    },
+    getuser: (state)=>{
+        return state.userinfo.username;
     }
 };
 
