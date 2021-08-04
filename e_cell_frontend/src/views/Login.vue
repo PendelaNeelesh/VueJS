@@ -9,6 +9,19 @@
         <div class="submit">
           <button>Login</button>
         </div>
+        <div class="errors" v-if="userstatus.errors"> Username or Password is wrong please try again 
+          <div>
+            <router-link @click="topFunction" to="/signin"> new user? sign_in here </router-link>
+          </div>
+        </div>
+        <div class="noerrors" v-if="verifeidstatus">
+          <div v-if="!userstatus.ismanager">
+            <router-link @click="topFunction" to="/internslist">reach your goal from here.</router-link>
+          </div>
+          <div v-if="userstatus.ismanager">
+            <router-link @click="topFunction" to="/makeintern">Add your spot here.</router-link>
+          </div>
+        </div>
       </form>
     </div>
   </div>
@@ -18,7 +31,10 @@
 import {mapGetters} from 'vuex'
 export default {
   name: "Signin",
-  computed: mapGetters( ['userstatus'] ),
+  computed: {
+    ...mapGetters( ['userstatus'] ),
+    ...mapGetters( ['verifeidstatus'])
+  },
   methods: {
     async handlesubmit(){
       await this.$store.dispatch("verifyuser")
@@ -90,5 +106,17 @@ export default {
     .submit{
       text-align: center;
       height: fit-content;
+    }
+    .errors{
+      color: red;
+      text-align: center;
+      width: inherit;
+    }
+    .noerrors{
+      color: green;
+      text-align: center;
+      font-size: 15px;
+      font-weight: bold;
+      color: white;
     }
 </style>

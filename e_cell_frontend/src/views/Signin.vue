@@ -1,25 +1,37 @@
 <template>
   <div class="formdiv">
     <div class="form">
+      <div v-if="signindata.existerror" class="errors">
+        Please pick a new User name.
+      </div>
+      <div class="errors" v-if="passerror">
+        Password Mismatch
+      </div>
       <form class="formcontents" @submit.prevent="handlesubmit" >
         <label>Full Name: </label>
-        <input type="text" v-model="fullname" required>
+        <input type="text" v-model="signindata.user" required>
         <label>Email: </label>
-        <input type="email" v-model="email"  required>
+        <input type="email" v-model="signindata.email"  required>
         <label>password: </label>
-        <input type="password" v-model="password" required>
+        <input type="password" v-model="signindata.pass1" required>
         <label>Confirm Password: </label>
-        <input type="password" v-model="cnfpassword" required>
+        <input type="password" v-model="signindata.pass2" required>
         <label>Sign-in as:</label>
-        <select v-model="role">
-          <option value="User/Student">User or Student</option>
-          <option value="Manager">Manager</option>
+        <select v-model="signindata.type">
+          <option value="user">User or Student</option>
+          <option value="manager">Manager</option>
         </select>
         <div class="submit">
-          <button @click="topFunction">Create Account</button>
+          <button>Create Account</button>
         </div>
         <div class="submit">
           <router-link @click="topFunction" to="/login"> Having Account? Login here </router-link>
+        </div>
+        <div v-if="signindata.existerror" class="errors">
+          Please pick a new User name.
+        </div>
+        <div class="noerrors" v-if="signindata.created" >
+          User created sucessfully login here.
         </div>
       </form>
     </div>
@@ -27,26 +39,32 @@
 </template>
 
 <script>
+import { mapGetters }  from 'vuex'
 export default {
   name: "Signin",
   data(){
     return {
-      fullname: "",
-      email: "",
-      password: "",
-      cnfpassword: "",
-      role: "User/Student",
-      
+      passerror: false,
     }
   },
   methods: {
-    handlesubmit(){
-      console.log("Submit");
+    async handlesubmit(){
+      let temp = this.signindata;
+      if(temp.pass1 === temp.pass2){
+        await this.$store.dispatch("createnewuser")
+      }
+      else{
+        this.passerror = true;
+      }
+      
     },
     topFunction() {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
       }
+  },
+  computed: {
+    ...mapGetters( ['signindata'])
   }
 }
 </script>
@@ -108,5 +126,15 @@ export default {
     .submit{
       text-align: center;
 
+    }
+    .errors{
+      text-align: center;
+      color: red;
+      font-size: 15px;
+    }
+    .noerrors{
+      text-align: center;
+      color: green;
+      font-size: 15px;
     }
 </style>

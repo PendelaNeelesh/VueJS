@@ -5,7 +5,8 @@ const state = {
         username: "",
         password: "",
         ismanager: false,
-        verified: false
+        verified: false,
+        errors: false,
     }
 }
 
@@ -14,12 +15,15 @@ const getters = {
         return state.userinfo;
     },
     verifeidstatus: (state)=>{
-        return state.verified;
+        return state.userinfo.verified;
+    },
+    managerstatus: (state)=>{
+        return state.userinfo.ismanager;
     }
 };
 
 const actions = {
-    verifyuser:  async (state)=>{
+    verifyuser:  async function (state){
         console.log("in func")
         await jQuery.ajax('http://127.0.0.1:8000/users/verify', {
             type: 'POST',
@@ -31,12 +35,17 @@ const actions = {
                 console.log(data)
                 if(data.message == "User does not exist please signUp"){
                     console.log("false")
-                    state.state.userinfo.verified = false;
+                    state.commit("errors")
+                    
                 }
                 else{
-                    console.log("true")
-                    state.state.userinfo.verified = true;
-
+                    if(data.ismanager === "True"){
+                        state.commit("toadmin")
+                    }
+                    else{
+                        state.commit("touser")
+                    }
+                    state.commit("noerrors")
                 }
             },
             error: function (jqXhr, textStatus, errorMessage) {
@@ -47,9 +56,22 @@ const actions = {
 };
 
 const mutations = {
-    changeverified: (state)=>{
+    errors: (state)=>{
+        state.userinfo.errors = true;
+        state.userinfo.verified = false;
+    },
+    noerrors: (state)=>{
+        state.userinfo.errors = false;
         state.userinfo.verified = true;
+
+    },
+    toadmin: (state)=>{
+        state.userinfo.ismanager = true;
+    },
+    touser: (state)=>{
+        state.userinfo.ismanager = false;
     }
+
 };
 
 export default{

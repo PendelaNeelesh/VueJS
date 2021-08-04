@@ -33,8 +33,13 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link @click="topFunction" class="nav-link btn  btn-primary" v-if="loginactive"  to="/signin">
+          <router-link v-if="!verifeidstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/login">
             Login
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link v-if="!verifeidstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/signin">
+            Signin
           </router-link>
         </li>
       </ul>
@@ -151,13 +156,9 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   export default{ 
     name:'App',
-    data(){
-      return {
-        loginactive: true,
-      }
-    },
      methods: {
       loginoff(){
          this.loginactive = false;
@@ -170,6 +171,10 @@
         document.documentElement.scrollTop = 0;
         }
       },
+    computed: {
+      ...mapGetters(['verifeidstatus']),
+      ...mapGetters(['managerstatus'])
+    }
   }
 
 </script>

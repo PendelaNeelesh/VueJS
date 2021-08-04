@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Signin from '../views/Signin.vue'
 import Login from '../views/Login.vue'
 import InternsList from '../views/InternsList.vue'
+import AddInterns from '../views/AddInterns.vue'
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/internslist',
     name: 'InternsList',
     component: InternsList
+  },
+  {
+    path: '/makeintern',
+    name: 'AddInterns',
+    component: AddInterns
   }
 ]
 

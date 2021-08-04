@@ -22,7 +22,7 @@
           <div class="pay">
               <form class="filterfrom">
                   <div class="fomrdiv">
-                      <input type="text" placeholder="type" v-model="jobtypes">
+                      <input type="text" placeholder="pay" v-model="jobtypes">
                       {{ jobtypes }}
                       <font-awesome-icon :icon="['far', 'address-card']" />
                   </div>
@@ -31,7 +31,7 @@
       </div>
       <div class="content">
           <div class="contentwrapper">
-            <Intern v-for="intern in Interns" :key="intern.id" :internship="intern" />
+            <Intern v-for="intern in getinterns" :key="intern.id" :internship="intern" />
           </div>
       </div>
   </div>
@@ -39,60 +39,26 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Intern from '../components/Intern.vue'
 export default {
     name: "InternsList",
     data(){
         return {
             jobtypes: "",
-            Interns: [
-          {
-            id: 1,
-            title: "Soft-ware-developer at Google",
-            location: "Guntur",
-            type: "software-devloper",
-            minpay: 10000,
-            maxpay: 20000,
-            description: "Lorem...",
-            company: "Google"
-
-          },
-          {
-            id: 2,
-            title: "Soft-ware-developer at hippo",
-            location: "Hyderabad",
-            type: "product-developer",
-            minpay: 1000,
-            maxpay: 2000,
-            description: "Lorem...",
-            company: "hippo"
-          },
-          {
-            id: 4,
-            title: "Soft-ware-developer at hippo",
-            location: "Hyderabad",
-            type: "product-developer",
-            minpay: 1000,
-            maxpay: 2000,
-            description: "Lorem...",
-            company: "hippo"
-          },
-          {
-            id: 3,
-            title: "Soft-ware-developer at hippo",
-            location: "Hyderabad",
-            type: "product-developer",
-            minpay: 1000,
-            maxpay: 2000,
-            description: "Lorem...",
-            company: "hippo"
-          }
-        ]
         }
     },
-    computed: mapGetters( ['verifeidstatus'] ),
-    components: { Intern, }
+    computed: {
+        ...mapGetters( ['verifeidstatus'] ),
+        ...mapGetters( ['getinterns']),
+    },
+    components: { Intern, },
+    mounted(){
+        if(this.verifeidstatus){
+            this.$store.dispatch("getinterns")
+        }
+        
+    }
 
 }
 </script>

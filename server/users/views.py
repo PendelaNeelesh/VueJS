@@ -11,8 +11,7 @@ def verify(request):
         print(request.POST)
         user = authenticate(username=request.POST.get('user'),password=request.POST.get('pass'))
         if user is not None:
-            print(user.ext_user.ismanager)
-            xyz = { "verified":"1" }
+            xyz = { "ismanager":user.ext_user.ismanager }
             return JsonResponse(xyz)
         else:
             res = {
@@ -39,3 +38,9 @@ def createuser(request):
             user.save()
         xyz = { "message":"User Created" }
         return JsonResponse(xyz)
+
+def interns(request):
+    if(request.method == "GET"):
+        print(request.GET.get('all'))
+        xyz = { "all":"fine" }
+    return JsonResponse(xyz)
