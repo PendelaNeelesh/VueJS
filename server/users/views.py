@@ -56,7 +56,7 @@ def interns(request):
     if(request.GET.get('user') is not None):
         username = request.GET.get('user')
         u = User.objects.get(username=username)
-        interns = Intern.objects.all().filter(username=u)[num*10:(num+1)*10]
+        interns = Intern.objects.all().filter(username=u)
         serializer = InternSerializer(interns, many=True)
         return Response(serializer.data)
     if(request.GET.get('loc')!= "default" and request.GET.get('loc') is not None):

@@ -21,11 +21,11 @@
       <div class="content">
         <Intern v-for="intern in getinterns" :key="intern.auto_id" :internship="intern"/>
       </div>
-    <div class="buttons">
+    <div  class="buttons">
         <button class="btn  btn-primary" @click="getprev">
             prev
         </button>
-        <button class="btn  btn-primary" @click="getnext">
+        <button  class="btn  btn-primary" @click="getnext">
             next
         </button>
     </div>
@@ -50,17 +50,26 @@ export default {
             this.$store.dispatch("getinterns")
         },
         getnext(){
+            console.log("in herherherhe")
+            console.log(this.managerstatus)
             let p = this.page
             let t = this.total
             if(p*10-t<10){
-                this.$store.dispatch("getnext")
+                if(!this.managerstatus){
+                    this.$store.dispatch("getnext")
+                }
             }
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         },
         getprev(){
+            console.log("ihddiwnhin")
+                console.log(this.managerstatus)
             if(this.page>0){
-                this.$store.dispatch("getprev")
+                console.log(this.managerstatus)
+                if(!this.managerstatus){
+                    this.$store.dispatch("getprev")
+                }
             }
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
@@ -76,7 +85,8 @@ export default {
         ...mapGetters( ['total'] ),
         ...mapGetters( ['verifeidstatus'] ),
         ...mapGetters( ['getinterns']),
-        ...mapGetters( ['filterele'])
+        ...mapGetters( ['filterele']),
+        ...mapGetters( ['managerstatus'] ),
     },
     components: { Intern, },
     mounted(){

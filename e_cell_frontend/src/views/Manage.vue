@@ -3,14 +3,6 @@
       <div class="content">
         <Intern v-for="intern in getinterns" :key="intern.auto_id" :internship="intern" />
       </div>
-    <div class="buttons">
-        <button class="btn  btn-primary" @click="getprev">
-            prev
-        </button>
-        <button class="btn  btn-primary" @click="getnext">
-            next
-        </button>
-    </div>
   </div>
   <div v-else> Please login </div>
 </template>

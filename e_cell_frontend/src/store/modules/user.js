@@ -67,12 +67,18 @@ const mutations = {
         state.userinfo.errors = false;
         state.userinfo.verified = true;
 
+
     },
     toadmin: (state)=>{
+        console.log("in ver")
         state.userinfo.ismanager = true;
+        console.log(state.userinfo.ismanager)
     },
     touser: (state)=>{
+        console.log("in ver")
         state.userinfo.ismanager = false;
+        console.log(state.userinfo.ismanager)
+
     }
 
 };
