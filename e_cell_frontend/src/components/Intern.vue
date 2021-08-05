@@ -40,8 +40,9 @@ export default {
       },
     },
     methods: {
-        deleteme(id){
-          this.$store.dispatch("deleteintern",id,this.getuser)
+        async deleteme(id){
+          await this.$store.dispatch("deleteintern",id,this.getuser)
+          this.$store.dispatch("getmanagerinterns",this.getuser)
         },
     }
 }
