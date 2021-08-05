@@ -59,7 +59,7 @@ def interns(request):
         interns = Intern.objects.all().filter(username=u)[num*10:(num+1)*10]
         serializer = InternSerializer(interns, many=True)
         return Response(serializer.data)
-    if(request.GET.get('loc')!= "default"):
+    if(request.GET.get('loc')!= "default" and request.GET.get('loc') is not None):
         interns = Intern.objects.all().filter(location=request.GET.get('loc'))[num*10:(num+1)*10]
         serializer = InternSerializer(interns, many=True)
         return Response(serializer.data)

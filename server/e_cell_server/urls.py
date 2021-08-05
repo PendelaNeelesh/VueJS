@@ -7,6 +7,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/',include('users.urls')), 
     path('accounts/',include('django.contrib.auth.urls')),
-    path('',TemplateView.as_view(template_name='index.html'))
+    path('',TemplateView.as_view(template_name='index.html')),
+    path('^static/(?P<path>.*)$',TemplateView.as_view(template_name='index.html'))
 ]
-urlpatterns += staticfiles_urlpatterns()
