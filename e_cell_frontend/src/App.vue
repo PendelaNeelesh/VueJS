@@ -28,27 +28,27 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="!managerstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/internslist">
+          <router-link style="color: white;" v-if="!managerstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/internslist">
             Interns
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="managerstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/managerlist">
+          <router-link style="color: white;" v-if="managerstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/managerlist">
             Your Interns
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="managerstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/makeintern">
+          <router-link  style="color: white;" v-if="managerstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/makeintern">
             Add Interns
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="!verifeidstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/login">
+          <router-link style="color: white;" v-if="!verifeidstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/login">
             Login
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="!verifeidstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/signin">
+          <router-link style="color: white;" v-if="!verifeidstatus" @click="topFunction" class="nav-link btn  btn-primary" to="/signin">
             Signin
           </router-link>
         </li>
@@ -98,7 +98,7 @@
           <!--Grid column-->
           <div class="col-auto">
             <p class="pt-2">
-              <strong>Sign up for our newsletter</strong>
+              <strong>Any queries? Send us your mail.</strong>
             </p>
           </div>
           <!--Grid column-->
@@ -106,10 +106,12 @@
           <!--Grid column-->
           <div class="col-md-5 col-12">
             <!-- Email input -->
-            <form @submit.prevent="" class="form-outline form-white mb-4">
+            <form @submit.prevent="sendmail" class="form-outline form-white mb-4">
               <input class="email" type="email" placeholder="email adress" id="form5Example2" />
               <br>
               <input @click="subscribed" class="subscribe" type="submit" value="Subscribe">
+              <br>
+              <div v-if="sent"> Mail sent sucessfully we will contact you soon.</div>
             </form>
           </div>
           <!--Grid column-->
@@ -138,16 +140,16 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="https://www.linkedin.com/in/neelesh-pendela-38ab8318b/" class="text-white">Pendela Neelesh</a>
+              <a href="https://www.linkedin.com/in/neelesh-pendela-38ab8318b/" target="_blank" rel="noopener noreferrer" class="text-white">Pendela Neelesh</a>
             </li>
             <li>
-              <a href="https://ecell.nitk.ac.in/" class="text-white">E-Cell NITK</a>
+              <a href="https://ecell.nitk.ac.in/" target="_blank" rel="noopener noreferrer" class="text-white">E-Cell NITK</a>
             </li>
             <li>
-              <a href="https://nitk.ac.in/" class="text-white">NITK</a>
+              <a href="https://nitk.ac.in/" target="_blank" rel="noopener noreferrer" class="text-white">NITK</a>
             </li>
             <li>
-              <a href="https://iris.nitk.ac.in/" class="text-white">IRIS</a>
+              <a href="https://iris.nitk.ac.in/" target="_blank" rel="noopener noreferrer" class="text-white">IRIS</a>
             </li>
           </ul>
         </div>
@@ -160,8 +162,7 @@
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.3751456672608!2d74.79077791479327!3d13.011765890829532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35211c2b4691d%3A0xe4546bb53e747b06!2sNITK%20bus%20stand!5e0!3m2!1sen!2sin!4v1627817758104!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    © 2020 Copyright:Pendela
   </div>
   <!-- Copyright -->
   </footer>
@@ -174,6 +175,11 @@
   import { mapGetters } from 'vuex'
   export default{ 
     name:'App',
+    data(){
+      return {
+        sent: false
+      }
+    },
      methods: {
       loginoff(){
          this.loginactive = false;
@@ -188,8 +194,14 @@
       clearsession(){
         console.log('in clear session')
         window.sessionStorage.clear();
-        window.location.reload();
+        location.href='http://127.0.0.1:8000/';
         console.log(window.sessionStorage)
+      },
+      sendmail(){
+        this.sent = true;
+        setTimeout(() => {
+          this.sent = false;
+        }, 5000);
       }
       },
     computed: {

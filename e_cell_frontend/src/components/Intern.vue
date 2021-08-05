@@ -15,7 +15,7 @@
       Location: <span>{{ internship.location }}</span>
     </div>
     <div v-if="!managerstatus" class="button">
-      <a v-if="!managerstatus" :href="url">
+      <a v-if="!managerstatus" target="_blank" rel="noopener noreferrer" :href="url">
         Apply
       </a>
     </div>

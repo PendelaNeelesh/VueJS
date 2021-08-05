@@ -33,40 +33,40 @@
         Google
       </div>
       <div class="company">
-        <router-link to="/internslist">  Google</router-link>
+        Facebook
       </div>
       <div class="company">
-        Google
+        Amazon
       </div>
       <div class="company">
-        Google
+        Flipkart
       </div>
       <div class="company">
-        Google
+        Snapdeal
       </div>
       <div class="company">
-        Google
+        Hippo
       </div>
       <div class="company">
-        Google
+        Zoho
       </div>
       <div class="company">
-        Google
+        Zomato
       </div>
       <div class="company">
-        Google
+        Swiggy
       </div>
       <div class="company">
-        Google
+        Microsoft
       </div>
       <div class="company">
-        Google
+        Tencent
       </div>
       <div class="company">
-        Google
+        TrusTrace
       </div>
       <div class="company">
-        Google
+        Pitoras
       </div>
     </div>
   </div>
@@ -166,6 +166,8 @@ export default {
   }
   .company{
     text-align: center;
+    font-weight: bold;
+    font-style: oblique;
   }
   .question{
     text-align: center;

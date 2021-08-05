@@ -3,13 +3,15 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from .models import Ext_User
 from .models import Intern
+from django.shortcuts import render
+from django.template import Context
 
 from .serializers import InternSerializer
 from .serializers import InternDetailSerializer
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-# Create your views here.
+#View to verify the user and also return the manager status
 def verify(request):
     if(request.method == "POST"):
         print(request.POST)
@@ -22,6 +24,8 @@ def verify(request):
                 "message": "User does not exist please signUp"
             }
             return JsonResponse(res)
+
+#view to create the user
 def createuser(request):
     if(request.method == "POST"):
         print(request.POST)
@@ -42,6 +46,8 @@ def createuser(request):
             user.save()
         xyz = { "message":"User Created" }
         return JsonResponse(xyz)
+
+#view to get the interns based on filters
 @api_view(['GET'])
 def interns(request):
     num = int(request.GET.get('page'))
@@ -60,6 +66,8 @@ def interns(request):
     interns = Intern.objects.all()[num*10:(num+1)*10]
     serializer = InternSerializer(interns, many=True)
     return Response(serializer.data)
+
+#preflight requst to get total number of interns present
 @api_view(['GET'])
 def internCount(request):
     interns = Intern.objects.all()
@@ -68,6 +76,8 @@ def internCount(request):
         count = count+1
     data = { "count":count}
     return Response(data)
+
+#View to add interns
 def addintern(request):
     if(request.method == "POST"):
         company = request.POST.get('comp')
@@ -86,18 +96,22 @@ def addintern(request):
         else:
             xyz = { "message": "not created" }
             return JsonResponse(xyz)
+
+#view to delete request
 @api_view(['GET'])
 def deleteintern(request):
     id = request.GET.get('id')
     Intern.objects.filter(auto_id=id).delete()
     data = { "message": "deleted"}
     return Response(data)
+
+#view to appli intrenship.
 @api_view(['GET'])
 def applyinternship(request):
     id = request.GET.get('id')
     user = request.GET.get('user')
-    interns = Intern.objects.all().filter(auto_id=id)
+    interns = Intern.objects.filter(auto_id=id)
     serializer = InternDetailSerializer(interns, many=True)
     admin_mail = User.objects.all().filter(id=serializer.data[0]['username']).values('email')
-    print(admin_mail)
-    return JsonResponse({"m":"m"})
+    return render(request, 'apply.html', {"data":serializer.data[0]})
+
