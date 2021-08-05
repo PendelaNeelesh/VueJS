@@ -28,7 +28,7 @@ const getters = {
 const actions = {
     verifyuser:  async function (state){
         console.log("in func")
-        await jQuery.ajax('http://127.0.0.1:8000/users/verify', {
+        await jQuery.ajax('/users/verify', {
             type: 'POST',
             data: {
                 user: state.state.userinfo.username,

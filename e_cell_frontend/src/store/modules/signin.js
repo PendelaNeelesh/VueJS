@@ -21,7 +21,7 @@ const getters = {
 
 const actions = {
     createnewuser: async function (state){
-        await jQuery.ajax('http://127.0.0.1:8000/users/create',{
+        await jQuery.ajax('/users/create',{
             type: 'POST',
             data: {
                 user: state.state.signindata.user,

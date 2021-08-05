@@ -32,13 +32,13 @@ const actions = {
     getinterns: async function (state){
         console.log(state.state.filterele)
         await jQuery.ajax({
-            url: `http://127.0.0.1:8000/users/count?loc=${state.state.filterele}`,
+            url: `/users/count?loc=${state.state.filterele}`,
             success: (data)=>{
                 state.commit("changetotal",data)
             }
 
         })
-        const url = `http://127.0.0.1:8000/users/interns?page=${state.state.page}&loc=${state.state.filterele}`
+        const url = `/users/interns?page=${state.state.page}&loc=${state.state.filterele}`
         await jQuery.ajax({
             url: url,
             success: (data)=>{
@@ -48,13 +48,13 @@ const actions = {
     },
     getmanagerinterns: async function (state){
         await jQuery.ajax({
-            url: `http://127.0.0.1:8000/users/count`,
+            url: `/users/count`,
             success: (data)=>{
                 state.commit("changetotal",data)
             }
 
         })
-        const url = `http://127.0.0.1:8000/users/interns?page=${state.state.page}&user=${state.getters.getuser}`
+        const url = `/users/interns?page=${state.state.page}&user=${state.getters.getuser}`
         console.log(url)
         await jQuery.ajax({
             url: url,
@@ -65,7 +65,7 @@ const actions = {
     },
     deleteintern: async function (state,id){
         await jQuery.ajax({
-            url: `http://127.0.0.1:8000/users/delinterns?id=${id}`,
+            url: `/users/delinterns?id=${id}`,
             success: (data)=>{
                 if(data.message=="deleted"){
                     console.log("deleted")
@@ -75,12 +75,12 @@ const actions = {
     },
     addintern: async function(state,data){
         await jQuery.ajax({
-            url: `http://127.0.0.1:8000/users/addintern`,
+            url: `/users/addintern`,
             type: 'POST',
             data: data,
             success: function(data,status,xhr){
                 console.log(data)
-                location.href='http://127.0.0.1:8000/';
+                location.href='/';
             }
         })
     },
@@ -89,7 +89,7 @@ const actions = {
         await state.commit("increase")
         console.log(state.state.page)
         await jQuery.ajax({
-            url: `http://127.0.0.1:8000/users/interns?page=${state.state.page}`,
+            url: `/users/interns?page=${state.state.page}`,
             success: (data)=>{
                 console.log(data)
                 state.commit("adddata",data)
@@ -99,7 +99,7 @@ const actions = {
     getprev: async function (state){
         await state.commit("decrease")
         await jQuery.ajax({
-            url: `http://127.0.0.1:8000/users/interns?page=${state.state.page}`,
+            url: `/users/interns?page=${state.state.page}`,
             success: (data)=>{
                 console.log(data)
                 state.commit("adddata",data)
